@@ -9,7 +9,7 @@ const Customers = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/user/getall');
+                const response = await axios.get('http://localhost:5000/api/user/getall');
                 setUsers(response.data);
             } catch (error) {
                 console.error('Error fetching users:', error);

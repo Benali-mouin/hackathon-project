@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../css/EstateDetails.css';
+import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function EstateDetails() {
@@ -11,7 +12,7 @@ function EstateDetails() {
   useEffect(() => {
     const fetchEstateDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/estate/get/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/estate/get/${id}`);
         setEstate(response.data);
       } catch (error) {
         console.error('Error fetching estate details:', error);
@@ -33,7 +34,9 @@ function EstateDetails() {
       
       <div className="estate-header-section">
         <div className="estate-badges">
-          <span className="price-badge">{estate.price.toLocaleString()} DT</span>
+        <Link to="/payment" className="price-badge">
+  {estate.price.toLocaleString()} DT
+</Link>
           <span className="type-badge">Appartement</span>
         </div>
         

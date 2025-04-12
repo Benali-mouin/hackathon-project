@@ -25,11 +25,11 @@ const Estate = () => {
         if (categoryId) {
           // Fetch estates by category ID
           console.log(`Fetching estates for category ID: ${categoryId}`);
-          response = await axios.get(`http://localhost:3000/api/estate/getByCategory/${categoryId}`);
+          response = await axios.get(`http://localhost:5000/api/estate/getByCategory/${categoryId}`);
         } else {
           // Fetch all estates
           console.log('Fetching all estates');
-          response = await axios.get('http://localhost:3000/api/estate/getAll');
+          response = await axios.get('http://localhost:5000/api/estate/getAll');
         }
         
         console.log('Estates fetched:', response.data.length);

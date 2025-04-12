@@ -57,7 +57,7 @@ function AddEstate({ onEstateAdded }) {
 
       // Create the new estate object
       const newEstate = { ...formData, image_url: imageUrl };
-      await axios.post('http://localhost:3000/api/estate/create', newEstate);
+      await axios.post('http://localhost:5000/api/estate/create', newEstate);
 
       if (onEstateAdded) onEstateAdded();
 

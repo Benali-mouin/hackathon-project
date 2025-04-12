@@ -12,7 +12,7 @@ function Category() {
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/api/category/getall');
+      const response = await axios.get('http://localhost:5000/api/category/getall');
       setCategories(response.data);
       setError(null);
     } catch (error) {

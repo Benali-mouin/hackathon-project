@@ -27,13 +27,11 @@ const Nav = () => {
 
   return (
     <>
-      <nav className={`navbar navbar-expand-lg fixed-top ${
-        scrolled || isDarkPage ? 'bg-light shadow navbar-scrolled' : 'bg-transparent'
-      }`}>
+      <nav className={`navbar navbar-expand-lg fixed-top ${scrolled || isDarkPage ? 'bg-light shadow navbar-scrolled' : 'bg-transparent'
+        }`}>
         <div className="container">
-          <Link to="/" className={`navbar-brand fw-bold ${
-            scrolled || isDarkPage ? 'text-dark' : 'text-white'
-          }`}>DARNA</Link>
+          <Link to="/" className={`navbar-brand fw-bold ${scrolled || isDarkPage ? 'text-dark' : 'text-white'
+            }`}>DARNA</Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -48,28 +46,23 @@ const Nav = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto align-items-center">
               <li className="nav-item">
-                <Link to="/" className={`nav-link ${
-                  scrolled || isDarkPage ? 'text-dark' : 'text-white'
-                }`}>Home</Link>
+                <Link to="/" className={`nav-link ${scrolled || isDarkPage ? 'text-dark' : 'text-white'
+                  }`}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link to="/estate" className={`nav-link ${
-                  scrolled || isDarkPage ? 'text-dark' : 'text-white'
-                }`}>Estate</Link>
+                <Link to="/estate" className={`nav-link ${scrolled || isDarkPage ? 'text-dark' : 'text-white'
+                  }`}>Estate</Link>
               </li>
               <li className="nav-item">
 
-                <Link to="/about" className={`nav-link ${
-                <Link to="/about" className={`nav-link ${
-                  scrolled || isDarkPage ? 'text-dark' : 'text-white'
-                }`}>About Us</Link>
+                <Link to="/about" className={`nav-link ${scrolled || isDarkPage ? 'text-dark' : 'text-white'
+                  }`}>About Us</Link>
               </li>
               {user ? (
                 <li className="nav-item dropdown">
                   <a
-                    className={`nav-link dropdown-toggle d-flex align-items-center ${
-                      scrolled || isDarkPage ? 'text-dark' : 'text-white'
-                    }`}
+                    className={`nav-link dropdown-toggle d-flex align-items-center ${scrolled || isDarkPage ? 'text-dark' : 'text-white'
+                      }`}
                     href="#"
                     id="userDropdown"
                     role="button"
@@ -78,7 +71,7 @@ const Nav = () => {
                   >
                     {user.profilePicture ? (
                       <img
-                        src={user.profilePicture||user.pfp}
+                        src={user.profilePicture || user.pfp}
                         alt="Profile"
                         className="rounded-circle me-2"
                         style={{ width: '30px', height: '30px', objectFit: 'cover' }}

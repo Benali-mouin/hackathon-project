@@ -12,7 +12,7 @@ function AllEstates() {
 
   const fetchEstates = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/estate/getall');
+        const response = await axios.get('http://localhost:5000/api/estate/getall');
         setEstates(response.data);
       } catch (error) {
         console.error('Error fetching estates:', error);
@@ -55,7 +55,7 @@ function AllEstates() {
 
       // Update the estate with the new data
       const updatedEstate = { ...selectedEstate, image_url: imageUrl };
-      await axios.put(`http://localhost:3000/api/estate/update/${selectedEstate.id}`, updatedEstate);
+      await axios.put(`http://localhost:5000/api/estate/update/${selectedEstate.id}`, updatedEstate);
       setEstates(estates)
       setIsModalOpen(false);
       setImageFile(null); // Reset the file input
@@ -72,7 +72,7 @@ function AllEstates() {
 
   const handleDeleteClick = async (estateId) => {
     try {
-     await axios.delete(`http://localhost:3000/api/estate/delete/${estateId}`);
+     await axios.delete(`http://localhost:5000/api/estate/delete/${estateId}`);
      setEstates(estates);
      fetchEstates(); // Refresh the estate list after deletion
     } catch (error) {

@@ -40,7 +40,7 @@ const ContactUs = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:3000/api/contact/add', formData);
+      const response = await axios.post('http://localhost:5000/api/contact/add', formData);
       if (response.status === 201) {
         console.log("Form submitted successfully"); // Debugging log
         swal("Success!", "Your message has been sent successfully!", "success")
