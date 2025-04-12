@@ -12,12 +12,11 @@
   }
   
   /* Image Section */
-  .estate-image-section {
-    position: sticky;
-    top: 40px;
-    height: calc(100vh - 80px);
-    border-radius: 20px;
-    overflow: hidden;
+  .estate-image-section :hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 
+                0 0 25px rgba(255, 215, 0, 0.8), /* Stronger glow effect */
+                0 0 50px rgba(255, 215, 0, 0.6);
   }
   
   .estate-image {

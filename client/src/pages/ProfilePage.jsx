@@ -93,7 +93,7 @@ const ProfilePage = () => {
       };
   
       const response = await axios.put(
-        `http://localhost:3000/api/users/${user.id}`,
+        `http://localhost:5000/api/users/${user.id}`,
         updatedData,
         {
           headers: { 'Content-Type': 'application/json' },

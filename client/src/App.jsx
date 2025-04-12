@@ -7,7 +7,7 @@ import EstateDetails from "./Components/EstateDetails.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import AboutUs from "./Components/Aboutus.jsx";
 import "./css/Navbar.css";
-import Payment from './Payment.js';
+import Payment from './payment.js';
 import Fail from './fail.js';
 import Success from './success.js';
 

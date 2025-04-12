@@ -13,7 +13,7 @@ const Messages = () => {
     // Fetch messages from the API
     const fetchMessages = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/contact/getall")
+        const response = await axios.get("http://localhost:5000/api/contact/getall")
         setMessages(response.data)
         setLoading(false)
       } catch (err) {

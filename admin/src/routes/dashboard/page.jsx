@@ -19,7 +19,7 @@ const DashboardPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/estate/getall');
+                const response = await axios.get('http://localhost:5000/api/estate/getall');
                 setEstateCount(response.data.length);
                 // Sort estates by price in descending order and take top 8
                 const sortedEstates = response.data

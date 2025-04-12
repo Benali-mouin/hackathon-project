@@ -30,10 +30,9 @@ function Payment() {
         const { result } = res.data;
         window.location.href = result.link;
       })
-      .catch((err) => {
-        console.log(err);
-        setError('Payment processing failed. Please try again.');
-        setLoading(false);
+      .catch(err => {
+        console.log("Full API error:", err.response?.data || err.message);
+        res.status(500).json({ error: "Payment processing failed" });
       });
   };
 

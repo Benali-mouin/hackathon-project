@@ -46,8 +46,8 @@ const AuthSidebar = ({ isOpen, onClose }) => {
     setLoading(true);
 
     const url = isLogin
-      ? "http://localhost:3000/api/auth/login"
-      : "http://localhost:3000/api/auth/register";
+      ? "http://localhost:5000/api/auth/login"
+      : "http://localhost:5000/api/auth/register";
 
     const data = isLogin
       ? { identifier: form.identifier, password: form.password }
@@ -57,7 +57,7 @@ const AuthSidebar = ({ isOpen, onClose }) => {
       await axios.post(url, data, { withCredentials: true });
 
       if (!isLogin) {
-        await axios.post("http://localhost:3000/api/auth/login", {
+        await axios.post("http://localhost:5000/api/auth/login", {
           identifier: form.username,
           password: form.password,
         }, {

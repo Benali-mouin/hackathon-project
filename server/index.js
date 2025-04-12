@@ -11,7 +11,7 @@ const paymentRouter = require("./routes/payment");
 
 const app = express();
  app.use(morgan("dev"));
-const port = process.env.SERVER_PORT || 3000;
+const port = 5000
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname,'public')))
@@ -27,10 +27,15 @@ const estateRoutes = require("./routes/Estate.routes.js");
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: ["http://localhost:3001", "http://localhost:3005"],// your frontend's origin
-  credentials: true, // allow cookies to be sent
-}));
+
+
+// Configure CORS to allow your frontend origin and credentials
+app.use(
+  cors({
+    origin: 'http://localhost:3001', // Replace with your frontend URL
+    credentials: true, // Allow cookies/auth headers
+  })
+);
 
 
 
