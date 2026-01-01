@@ -50,7 +50,7 @@ export default function FAQAccordion() {
 
   return (
     <div className="faqs-container">
-      <h1>FAQS WHEN BUYING WITH DARNA</h1>
+      <h1>FAQS WHEN RENTING WITH DYM</h1>
       <div className="faqs-list">
         {faqs.map((faq, index) => (
           <div key={index} className={`faq-item ${activeIndex === index ? "active" : ""}`}>

@@ -140,8 +140,8 @@ const ContactUs = () => {
       </form>
 
       <div className="contact-info">
-        <p><strong>E-mail:</strong> info@darna.fr</p>
-        <p><strong>Tél:</strong> 01 23 45 67 89</p>
+        <p><strong>E-mail:</strong> info@DYM.fr</p>
+        <p><strong>Tél:</strong>+216 29407219</p>
       </div>
     </div>
   );
