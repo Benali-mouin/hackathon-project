@@ -37,9 +37,12 @@ function Category() {
 
   if (loading) {
     return (
-      <div className="container py-5 text-center">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
+      <div className="category-container">
+        <div className="text-center" style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p style={{ marginTop: '20px', color: 'var(--airbnb-gray)', fontWeight: '500' }}>Loading amazing categories...</p>
         </div>
       </div>
     );
@@ -47,40 +50,81 @@ function Category() {
 
   if (error) {
     return (
-      <div className="container py-5 text-center">
+      <div className="category-container">
         <div className="alert alert-danger" role="alert">
           {error}
         </div>
+        <button 
+          onClick={fetchCategories} 
+          style={{
+            display: 'block',
+            margin: '30px auto 0',
+            padding: '12px 30px',
+            background: 'var(--gradient-primary)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '25px',
+            fontWeight: '600',
+            cursor: 'pointer'
+          }}
+        >
+          Try Again
+        </button>
       </div>
     );
   }
 
   return (
     <div className="category-container">
-      <h1 className="category-title">Our Exclusive Sales Listings</h1>
+      <h1 className="category-title">Explore Our Property Categories</h1>
       <button onClick={handleViewAllClick} className="view-all-btn">
-        View all properties
+        View All Properties →
       </button>
 
-      <section className="category-grid">
-        {categories.map((category) => (
-          <div className="category-card" key={category.id || category._id}
-               onClick={() => handleCategoryClick(category.id || category._id, category.name)}>
-            {category.img && (
-              <img
-                src={category.img}
-                className="category-img"
-                alt={category.name}
-              />
-            )}
-            <div className="category-body">
-              <h5 className="category-name">
-                {category.name}
-              </h5>
+      {categories.length === 0 ? (
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '60px 20px', 
+          color: 'var(--airbnb-gray)', 
+          fontSize: '1.2rem',
+          background: 'var(--airbnb-lighter-gray)',
+          borderRadius: 'var(--radius-lg)',
+          marginTop: '40px'
+        }}>
+          No categories available at the moment.
+        </div>
+      ) : (
+        <section className="category-grid">
+          {categories.map((category) => (
+            <div 
+              className="category-card" 
+              key={category.id || category._id}
+              onClick={() => handleCategoryClick(category.id || category._id, category.name)}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleCategoryClick(category.id || category._id, category.name);
+                }
+              }}
+            >
+              {category.img && (
+                <img
+                  src={category.img}
+                  className="category-img"
+                  alt={category.name}
+                  loading="lazy"
+                />
+              )}
+              <div className="category-body">
+                <h5 className="category-name">
+                  {category.name}
+                </h5>
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      )}
     </div>
   );
 }

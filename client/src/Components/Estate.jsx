@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import OneEstate from './OneEstate.jsx';
-import '../css/OneEstate.css';
+import '../css/EstateDetails.css';
 
 const Estate = () => {
   const [estates, setEstates] = useState([]);

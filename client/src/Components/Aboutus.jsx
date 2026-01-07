@@ -55,19 +55,19 @@ const AboutUs = () => {
         <div className="team-grid">
           <div className="team-member">
             <div className="member-photo photo1"></div>
-            <h3>John Smith</h3>
+            <h3>mouin benali</h3>
             <p className="position">Founder & CEO</p>
-            <p className="bio">20 years of experience in luxury real estate.</p>
+            <p className="bio">years of experience in luxury real estate.</p>
           </div>
           <div className="team-member">
             <div className="member-photo photo2"></div>
-            <h3>Sarah Johnson</h3>
+            <h3>yassine rakrouki</h3>
             <p className="position">Sales Director</p>
             <p className="bio">Specialist in international markets.</p>
           </div>
           <div className="team-member">
             <div className="member-photo photo3"></div>
-            <h3>Michael Brown</h3>
+            <h3>lka7louch</h3>
             <p className="position">Technology Lead</p>
             <p className="bio">Expert in digital real estate solutions.</p>
           </div>

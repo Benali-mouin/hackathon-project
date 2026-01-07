@@ -1,101 +1,647 @@
-/* src/components/ContactUs.css */
+/* ==============================================
+   CONTACT US - VIBRANT AIRBNB INSPIRED DESIGN
+   ============================================== */
+
+/* CSS Variables for Consistent Color Palette */
+:root {
+  --airbnb-red: #FF385C;
+  --airbnb-pink: #FF5A5F;
+  --airbnb-red-dark: #E31C5F;
+  --airbnb-red-light: #FF7D93;
+  --airbnb-coral: #FF6B6B;
+  --airbnb-orange: #FF8C42;
+  --airbnb-yellow: #FFC145;
+  --airbnb-teal: #00A699;
+  --airbnb-dark: #222222;
+  --airbnb-gray: #717171;
+  --airbnb-light-gray: #DDDDDD;
+  --airbnb-lighter-gray: #F7F7F7;
+  --airbnb-white: #FFFFFF;
+  --gradient-primary: linear-gradient(135deg, var(--airbnb-red) 0%, var(--airbnb-red-dark) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--airbnb-pink) 0%, var(--airbnb-orange) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--airbnb-yellow) 0%, var(--airbnb-orange) 100%);
+  --gradient-cool: linear-gradient(135deg, var(--airbnb-teal) 0%, #007A87 100%);
+  --shadow-colorful: 0 8px 32px rgba(255, 56, 92, 0.15);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Main Container with Colorful Background */
 .contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #3b3d2e;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 247, 247, 0.9) 50%,
+    rgba(255, 240, 240, 0.85) 100%);
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-colorful);
+}
+
+/* Colorful Background Decorative Elements */
+.contact-container::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.contact-container::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: var(--gradient-secondary);
+  border-radius: 50%;
+  opacity: 0.08;
+  z-index: 0;
+}
+
+/* Header with Colorful Gradient */
+.contact-container h1 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--airbnb-dark);
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  color: #222222 !important;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(255, 56, 92, 0.1);
+}
+
+.contact-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 8px;
+  background: var(--gradient-secondary);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
+}
+
+/* Subtitle */
+.contact-container > p {
+  text-align: center;
+  font-size: 20px;
+  color: var(--airbnb-gray);
+  margin-bottom: 80px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Two Column Layout */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+/* FORM SECTION - Colorful Design */
+.contact-form-section {
+  position: relative;
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-colorful);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(255, 56, 92, 0.2);
+  border: 3px solid var(--airbnb-red-light);
+}
+
+/* Form Header */
+.contact-form::before {
+  content: '📩 Send Us a Message';
+  position: absolute;
+  top: -20px;
+  left: 40px;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(255, 56, 92, 0.3);
+  z-index: 2;
+}
+
+/* Form Groups with Colorful Labels */
+.form-group {
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--airbnb-red-dark);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--airbnb-red-dark) 0%, var(--airbnb-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 18px 25px;
+  border: 3px solid var(--airbnb-light-gray);
+  border-radius: 16px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--airbnb-dark);
+  font-weight: 500;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--airbnb-red);
+  box-shadow: 0 0 0 4px rgba(255, 56, 92, 0.15);
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #000000;
+  font-weight: 400;
+}
+
+.form-group textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+/* Input Icons with Colors */
+.form-group::after {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: 45px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.form-group:nth-child(1)::after { content: '👤'; color: var(--airbnb-red); }
+.form-group:nth-child(2)::after { content: '✉️'; color: var(--airbnb-orange); }
+.form-group:nth-child(3)::after { content: '📱'; color: var(--airbnb-teal); }
+.form-group:nth-child(4)::after { content: '📍'; color: var(--airbnb-yellow); }
+.form-group:nth-child(5)::after { content: '💬'; color: var(--airbnb-pink); }
+
+/* SUBMIT BUTTON - Vibrant Gradient */
+.submit-btn {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 20px 45px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  box-shadow: 0 6px 25px rgba(255, 56, 92, 0.25);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 35px rgba(255, 56, 92, 0.35);
+  background: var(--gradient-secondary);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Button Shine Effect */
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent);
+  transition: left 0.8s ease;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+/* ERROR MESSAGE - Red Alert */
+.error-message {
+  background: linear-gradient(135deg, 
+    rgba(255, 56, 92, 0.1) 0%,
+    rgba(255, 90, 95, 0.1) 100%);
+  border: 3px solid var(--airbnb-red-light);
+  border-radius: 16px;
+  padding: 20px 25px;
+  margin-bottom: 40px;
+  color: var(--airbnb-red-dark);
+  font-weight: 700;
+  text-align: center;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(255, 56, 92, 0.1);
+  position: relative;
+}
+
+.error-message::before {
+  content: '⚠️';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+}
+
+/* INFO SECTION - Colorful Cards */
+.contact-info {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-colorful);
+  backdrop-filter: blur(20px);
+  border: 3px solid transparent;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.contact-info:hover {
+  transform: translateY(-5px);
+  border: 3px solid var(--airbnb-teal);
+  box-shadow: 0 12px 40px rgba(0, 166, 153, 0.15);
+}
+
+.contact-info::before {
+  content: '📞 Contact Information';
+  position: absolute;
+  top: -20px;
+  left: 40px;
+  background: var(--gradient-cool);
+  color: rgb(0, 0, 0);
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(0, 166, 153, 0.3);
+  z-index: 2;
+}
+
+/* Info Items with Color Coding */
+.info-item {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 3px solid;
+  border-image: var(--gradient-warm) 1;
+  position: relative;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.info-item h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--airbnb-dark);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.info-item p {
+  font-size: 17px;
+  line-height: 1.8;
+ color: #222222 !important; /* MADE BLACK */
+  margin-bottom: 15px;
+  padding-left: 35px;
+  position: relative;
+}
+
+.info-item p strong {
+  color: var(--airbnb-red-dark);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* Color Icons for Contact Info */
+.info-item p::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 20px;
+}
+
+.info-item p:nth-child(2)::before { content: '✉️'; color: var(--airbnb-red); }
+.info-item p:nth-child(3)::before { content: '📱'; color: var(--airbnb-orange); }
+.info-item p:nth-child(4)::before { content: '🕒'; color: var(--airbnb-teal); }
+
+/* CONTACT METHODS - Colorful Cards */
+.contact-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+@media (max-width: 480px) {
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+}
+
+.method {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px 25px;
+  border-radius: 20px;
+  border: 3px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.method:nth-child(1) {
+  background: linear-gradient(135deg, 
+    rgba(255, 56, 92, 0.05) 0%,
+    rgba(255, 90, 95, 0.05) 100%);
+  border: 3px solid var(--airbnb-red-light);
+}
+
+.method:nth-child(2) {
+  background: linear-gradient(135deg, 
+    rgba(0, 166, 153, 0.05) 0%,
+    rgba(0, 122, 135, 0.05) 100%);
+  border: 3px solid var(--airbnb-teal);
+}
+
+.method:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.method-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 32px;
+  transition: all 0.4s ease;
+}
+
+.method:nth-child(1) .method-icon {
+  background: var(--gradient-primary);
+  box-shadow: 0 8px 25px rgba(255, 56, 92, 0.25);
+}
+
+.method:nth-child(2) .method-icon {
+  background: var(--gradient-cool);
+  box-shadow: 0 8px 25px rgba(0, 166, 153, 0.25);
+}
+
+.method:hover .method-icon {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.method h4 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.method:nth-child(2) h4 {
+  background: var(--gradient-cool);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.method p {
+  font-size: 15px;
+   color: #222222 !important; /* MADE BLACK */
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* SUCCESS PAGE - Colorful Celebration */
+.contact-container .success-check {
+  width: 120px;
+  height: 120px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 40px;
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 15px 35px rgba(255, 56, 92, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3) rotate(-180deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(10deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.success-check::before {
+  content: '✓';
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+  animation: checkMark 0.5s ease 0.3s both;
+}
+
+@keyframes checkMark {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Loading Animation */
+@keyframes colorfulShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.submit-btn.loading {
+  background: linear-gradient(
+    90deg,
+    var(--airbnb-red) 0%,
+    var(--airbnb-orange) 25%,
+    var(--airbnb-yellow) 50%,
+    var(--airbnb-orange) 75%,
+    var(--airbnb-red) 100%
+  );
+  background-size: 200% auto;
+  animation: colorfulShimmer 2s infinite linear;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 70px 20px;
+    margin: 20px 15px;
+    border-radius: 30px;
   }
   
   .contact-container h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 42px;
   }
   
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
+  .contact-form,
+  .contact-info {
+    padding: 40px 30px;
   }
   
   .form-group input,
   .form-group textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-    min-height: 100px;
+    padding: 16px 20px;
   }
   
   .submit-btn {
-    background-color: #f4ad09;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 18px 35px;
     font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 50px 20px;
   }
   
-  .submit-btn:hover {
-    background-color: #eab813;
+  .contact-container h1 {
+    font-size: 36px;
   }
   
+  .contact-form,
   .contact-info {
-    margin: 30px 0;
-    text-align: center;
-    line-height: 1.6;
+    padding: 30px 25px;
   }
   
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 30px 0;
-    padding-top: 20px;
-    border-top: 1px solid #ddd;
+  .contact-form::before,
+  .contact-info::before {
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
-  
-  .footer-links a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .footer-links a:hover {
-    text-decoration: underline;
-  }
-  
-  .copyright {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    margin-top: 20px;
-  }
-  
-  .error-message {
-    color: #d9534f;
-    background-color: #f2dede;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
+}
+
+/* Colorful Confetti Effect on Success */
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  animation: confetti 3s ease-out forwards;
+  z-index: 0;
+}
+
+
+/* ULTIMATE FIX - FORCE BLACK TEXT EVERYWHERE IN CONTACT */
+.contact-container .contact-info * {
+  color: #000000 !important;
+  color: #222222 !important;
+  -webkit-text-fill-color: #222222 !important;
+  -webkit-text-fill-color: #000000 !important;
+  background-image: none !important;
+  background: transparent !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* Force remove any white text */
+.contact-info,
+.contact-info h3,
+.contact-info p,
+.contact-info strong,
+.contact-info span,
+.contact-info div,
+.method h4,
+.method p {
+  color: #222222 !important;
+}

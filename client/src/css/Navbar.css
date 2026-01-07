@@ -19,13 +19,14 @@
 
 .navbar.navbar-scrolled .nav-link,
 .navbar.navbar-scrolled .navbar-brand {
-  color: #333 !important;
+  color: #222222 !important;
 }
 
 .navbar-brand {
   font-size: 1.8rem;
   font-weight: bold;
   transition: color 0.3s ease;
+  color: #FF385C; /* Airbnb red for logo */
 }
 
 .nav-link {
@@ -33,23 +34,27 @@
   transition: color 0.3s ease;
   padding: 0.5rem 1rem !important;
   margin: 0 0.25rem;
+  color: #222222 !important; /* Airbnb black for text */
 }
 
 .nav-link:hover {
-  color: #ffd700 !important;
+  color: #FF385C !important; /* Airbnb red on hover */
 }
 
 .btn-warning {
-  background-color: #ffd700;
+  background-color: #FF385C; /* Airbnb red */
+  color: white !important; /* White text on red button */
   border: none;
   font-weight: 600;
   transition: all 0.3s ease;
+  border-radius: 21px; /* Airbnb style rounded */
+  padding: 0.5rem 1.5rem;
 }
 
 .btn-warning:hover {
-  background-color: #ffed4a;
+  background-color: #E31C5F; /* Darker red on hover */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
 }
 
 /* Dropdown styles */
@@ -66,11 +71,13 @@
   padding: 0.5rem 1rem;
   font-weight: 500;
   transition: all 0.2s ease;
+  color: #222222;
 }
 
 .dropdown-item:hover {
-  background-color: #f8f9fa;
+  background-color: #f7f7f7; /* Airbnb light gray */
   transform: translateX(5px);
+  color: #FF385C; /* Airbnb red on hover */
 }
 
 .dropdown-item i {
@@ -91,7 +98,7 @@
 
 .navbar.bg-light .nav-link,
 .navbar.bg-light .navbar-brand {
-  color: #333 !important;
+  color: #222222 !important;
 }
 
 /* Mobile responsiveness */
@@ -105,7 +112,7 @@
   }
 
   .navbar-collapse .nav-link {
-    color: #333 !important;
+    color: #222222 !important;
   }
 
   .navbar-toggler {
@@ -131,23 +138,24 @@
 
 /* Sign in button */
 .contact-btn {
-  background-color: #ffd700;
-  color: #333;
+  background-color: #FF385C; /* Airbnb red */
+  color: white;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 21px; /* Airbnb style */
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s ease;
 }
 
 .contact-btn:hover {
-  background-color: #ffed4a;
+  background-color: #E31C5F; /* Darker red */
+  color: white;
 }
 
 /* Make buttons and spans styled like links (when needed) */
 .nav-link,
 .nav-link-button {
-  color: white;
+  color: #222222; /* Airbnb black */
   text-decoration: none;
   font-weight: 500;
   background: none;
@@ -159,7 +167,7 @@
 
 .navbar.navbar-scrolled .nav-link,
 .navbar.navbar-scrolled .nav-link-button {
-  color: #333;
+  color: #222222; /* Airbnb black */
 }
 
 /* Optional: space between nav items */
@@ -180,17 +188,23 @@
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.user-pfp:hover {
+  border-color: #FF385C; /* Airbnb red border on hover */
 }
 
 .placeholder-pfp {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;  /* Same size as the user picture */
-  height: 40px; /* Same size as the user picture */
-  border-radius: 50%; /* Make it a circle */
-  background: linear-gradient(135deg, #ffcc70, #ffae00);  /* Gradient background */
-  color: white;  /* White text */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF385C, #E31C5F); /* Airbnb red gradient */
+  color: white;
   font-weight: bold;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -198,17 +212,53 @@
 
 /* Update the logout button */
 .nav-link-button {
-  background-color: #ffd700; /* Same as sign in button */
-  color: #333;
+  background-color: #FF385C; /* Airbnb red */
+  color: white;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 21px; /* Airbnb style */
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer on hover */
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-link-button:hover {
-  background-color: #ffed4a; /* Same hover effect as sign in */
+  background-color: #E31C5F; /* Darker red */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
+}
+
+/* Special styling for "Become a Host" */
+.nav-link[href*="host"] {
+  font-weight: 600;
+  color: #717171 !important; /* Airbnb gray for "Become a Host" */
+}
+
+.nav-link[href*="host"]:hover {
+  color: #FF385C !important; /* Red on hover */
+}
+
+/* If you want to add the DY'M logo styling like Airbnb */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo-main {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #FF385C;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.logo-subtitle {
+  font-size: 0.7rem;
+  color: #717171;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: -3px;
 }

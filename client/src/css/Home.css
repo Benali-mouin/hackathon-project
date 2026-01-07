@@ -1,35 +1,74 @@
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #FF385C;
+  --primary-dark: #E31C5F;
+  --primary-light: #FF5A7D;
+  --secondary: #222222;
+  --text-primary: #222222;
+  --text-secondary: #717171;
+  --text-light: #FFFFFF;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F7;
+  --border: #EBEBEB;
+  --shadow-sm: 0 2px 16px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
   overflow-x: hidden;
-  width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
-  background-color: #fff;
-  color: #333;
 }
 
 .home-container {
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden;
+  padding-top: 80px; /* Space for fixed header that will be in App.jsx or Layout */
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+}
+
+/* Hero Section - Airbnb Style */
 .hero-section {
   position: relative;
-  height: 100vh;
+  height: 70vh;
   width: 100%;
   background-image: url('../assets/images/hero-bg2.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   display: flex;
   align-items: center;
   padding: 0 5%;
+  margin-top: -80px; /* Compensate for header padding */
 }
 
 .hero-section::before {
@@ -40,9 +79,10 @@ body {
   right: 0;
   bottom: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.4) 100%
+    135deg,
+    rgba(15, 23, 42, 0.85) 0%,
+    rgba(15, 23, 42, 0.7) 50%,
+    rgba(30, 41, 59, 0.6) 100%
   );
   z-index: 0;
 }
@@ -51,97 +91,575 @@ body {
   position: relative;
   z-index: 1;
   max-width: 800px;
-  color: #fff;
+  color: var(--text-light);
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 64px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  background: linear-gradient(to right, #ffffff, #e2e8f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-content p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  line-height: 1.7;
-  color: #eee;
+  font-size: 20px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  color: #cbd5e1;
+  max-width: 600px;
+  font-weight: 400;
 }
 
 .cta-button {
-  display: inline-block;
-  background-color: #ffd700;
-  color: #333;
-  padding: 1rem 2.2rem;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-light);
+  padding: 18px 40px;
+  border-radius: var(--radius-lg);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  border: none;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-button:hover {
-  background-color: #ffec3d;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
 }
 
-.main-content {
-  padding: 5rem 5%;
+.cta-button:active {
+  transform: translateY(-1px);
+}
+
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s;
+}
+
+.cta-button:hover::after {
+  left: 100%;
+}
+
+/* Main Content Sections */
+.main-content {
+  padding: 100px 5%;
+  width: 100%;
+  background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
 }
 
 .content-section {
   max-width: 1200px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 80px;
   text-align: center;
   padding: 0 1rem;
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .content-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #222;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 16px;
+}
+
+.content-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  border-radius: 2px;
 }
 
 .content-section p {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: #555;
+  font-size: 18px;
+  line-height: 1.9;
+  color: var(--text-secondary);
   max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Airbnb-style Category Component Enhancement */
+/* This will style your existing Category component */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  padding: 80px 5%;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
+.category-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.category-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-lg);
+}
+
+.category-image {
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.category-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%);
+  transition: var(--transition);
+}
+
+.category-card:hover .category-image::before {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 40%);
+}
+
+.category-image h3 {
+  position: relative;
+  z-index: 1;
+  color: var(--text-light);
+  font-size: 28px;
+  font-weight: 700;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.category-card:hover .category-image h3 {
+  transform: translateY(0);
+}
+
+/* Airbnb-style FAQ Component */
+.faq-section {
+  background: var(--bg-secondary);
+  padding: 100px 5%;
+}
+
+.faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-container h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: var(--text-primary);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.faq-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  border-radius: 2px;
+}
+
+.faq-item {
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.faq-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item h3::after {
+  content: '+';
+  font-size: 28px;
+  color: var(--primary);
+  font-weight: 300;
+  transition: var(--transition);
+}
+
+.faq-item.active h3::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+.faq-item p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.active p {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Airbnb-style Contact Component */
+.contact-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark), var(--primary));
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-container h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: var(--text-light);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.contact-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  border-radius: 2px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--text-light);
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(255, 56, 92, 0.25);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.info-item .icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--text-light);
+}
+
+.info-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.info-item p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 56px;
   }
+  
+  .content-section h2,
+  .faq-container h2,
+  .contact-container h2 {
+    font-size: 40px;
+  }
+}
 
+@media (max-width: 900px) {
+  .hero-section {
+    height: 60vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 48px;
+  }
+  
   .hero-content p {
-    font-size: 1.1rem;
+    font-size: 18px;
   }
+  
+  .content-section h2,
+  .faq-container h2,
+  .contact-container h2 {
+    font-size: 36px;
+  }
+  
+  .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 60px 5%;
+  }
+}
 
+@media (max-width: 768px) {
+  .home-container {
+    padding-top: 70px;
+  }
+  
+  .hero-section {
+    height: 50vh;
+    margin-top: -70px;
+  }
+  
+  .hero-content h1 {
+    font-size: 40px;
+  }
+  
+  .hero-content p {
+    font-size: 16px;
+  }
+  
   .cta-button {
-    font-size: 0.95rem;
-    padding: 0.9rem 1.8rem;
+    padding: 16px 32px;
+    font-size: 16px;
   }
-
-  .main-content {
-    padding: 3rem 2rem;
+  
+  .content-section,
+  .faq-section,
+  .contact-section {
+    padding: 60px 5%;
+  }
+  
+  .content-section h2,
+  .faq-container h2,
+  .contact-container h2 {
+    font-size: 32px;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    height: 40vh;
+  }
+  
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 32px;
   }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
+  
   .cta-button {
-    font-size: 0.9rem;
-    padding: 0.8rem 1.5rem;
+    padding: 14px 28px;
+    font-size: 15px;
+    width: 100%;
+    max-width: 280px;
   }
+  
+  .category-grid {
+    grid-template-columns: 1fr;
+    padding: 40px 5%;
+  }
+  
+  .faq-item,
+  .contact-form {
+    padding: 24px;
+  }
+  
+  .content-section h2,
+  .faq-container h2,
+  .contact-container h2 {
+    font-size: 28px;
+  }
+}
+
+/* Loading Animation */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+/* Add animated gradient borders to interactive elements */
+.cta-button:hover,
+.faq-item:hover,
+.category-card:hover {
+  position: relative;
+}
+
+.cta-button:hover::before,
+.faq-item:hover::before,
+.category-card:hover::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--primary),
+    var(--primary-dark),
+    var(--primary-light),
+    var(--primary-dark),
+    var(--primary)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotation 4s linear infinite;
+  opacity: 0.7;
 }

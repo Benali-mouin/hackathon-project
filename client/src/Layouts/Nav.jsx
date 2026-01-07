@@ -31,7 +31,7 @@ const Nav = () => {
         }`}>
         <div className="container">
           <Link to="/" className={`navbar-brand fw-bold ${scrolled || isDarkPage ? 'text-dark' : 'text-white'
-            }`}>DARNA</Link>
+            }`}>DYM</Link>
           <button
             className="navbar-toggler"
             type="button"
